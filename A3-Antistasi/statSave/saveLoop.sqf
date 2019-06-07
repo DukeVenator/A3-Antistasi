@@ -48,8 +48,6 @@ if (!isDedicated) then
  savingServer = true;
  private ["_garrison"];
 	["cuentaCA", cuentaCA] call fn_SaveStat;
-	["timeSinceLastAttack", timeSinceLastAttack] call fn_SaveStat;
-	["cuentaCANonBuenos", cuentaCANonBuenos] call fn_SaveStat;
 	["gameMode", gameMode] call fn_SaveStat;
 	["dificultad", skillMult] call fn_SaveStat;
 	["bombRuns", bombRuns] call fn_SaveStat;
@@ -77,7 +75,7 @@ if (!isDedicated) then
 	["unlockedBackpacks", unlockedBackpacks] call fn_SaveStat;
 	*/
 	["weather",[fogParams,rain]] call fn_SaveStat;
-	//["destroyedBuildings",destroyedBuildings] call fn_SaveStat;
+	["destroyedBuildings",destroyedBuildings] call fn_SaveStat;
 	//["firstLoad",false] call fn_SaveStat;
 private ["_hrfondo","_resfondo","_veh","_tipoVeh","_armas","_municion","_items","_mochis","_contenedores","_arrayEst","_posVeh","_dierVeh","_prestigeOPFOR","_prestigeBLUFOR","_ciudad","_datos","_marcadores","_garrison","_arrayMrkMF","_arrayPuestosFIA","_pospuesto","_tipoMina","_posMina","_detectada","_tipos","_exists","_amigo"];
 
@@ -161,7 +159,7 @@ if ((alive _x) and !(surfaceIsWater _posicion) and !(isNull _x)) then
 	_cercano = [_sitios,_posicion] call BIS_fnc_nearestPosition;
 	if (_posicion inArea _cercano) then
 		{
-		_arrayEst pushBack [typeOf _x,getPos _x,getDir _x]
+		_arrayEst pushBack [typeOf _x,getPosATL _x,getDir _x]
 		};
 	*/
 	};

@@ -6,7 +6,6 @@ _ammo = "Bomb_03_F";
 _cuenta = 8;
 _cluster = false;
 _carpet = false;
-
 if (_tipo != "HE") then
 	{
 	_ammo = "G_40mm_HEDP";

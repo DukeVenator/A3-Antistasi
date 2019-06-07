@@ -25,7 +25,7 @@ if (count _this > 1) then
 _unit allowFleeing 0;
 _tipo = typeOf _unit;
 //_skill = if (_tipo in sdkTier1) then {0.1 + (skillFIA * 0.2)} else {if (_tipo in sdkTier2) then {0.2 + (skillFIA * 0.2)} else {0.3 + (skillFIA * 0.2)}};
-_skill = 0.1 + (skillFIA * 0.05);
+_skill = 0.1 + (skillFIA * 0.05 * skillMult);
 if ((_marcador == "Synd_HQ") and (isMultiplayer)) then {_skill = 1};
 _unit setSkill _skill;
 if (!activeGREF) then {if (not((uniform _unit) in uniformsSDK)) then {[_unit] call A3A_fnc_reDress}};
@@ -141,14 +141,14 @@ else
 	};
 
 // Ensure any launcher has ammo in the tube, and in the backpack if they have one.
-if !(secondaryWeapon _unit == "") then 
+if !(secondaryWeapon _unit == "") then
 	{
 	_magazines = getArray (configFile / "CfgWeapons" / (secondaryWeapon _unit) / "magazines");
-	if !(_magazines isEqualTo []) then 
+	if !(_magazines isEqualTo []) then
 		{
 		// Put ammo in the tube
 		_unit addSecondaryWeaponItem (_magazines select 0);
-		if !(isNull unitBackpack _unit) then 
+		if !(isNull unitBackpack _unit) then
 			{
 			// Force add ammo to backpack
 			(unitBackpack _unit) addItemCargoGlobal [_magazines select 0, 3];
@@ -226,7 +226,7 @@ _EHkilledIdx = _unit addEventHandler ["killed", {
 		};
 	if (side _killer == malos) then
 		{
-		[0,-0.25,getPos _muerto,"SDK Unit Killed"] remoteExec ["A3A_fnc_citySupportChange",2];
+		[0,-0.25,getPos _muerto] remoteExec ["A3A_fnc_citySupportChange",2];
 		[-0.25,0] remoteExec ["A3A_fnc_prestige",2];
 		}
 	else

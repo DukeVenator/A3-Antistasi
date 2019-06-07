@@ -54,8 +54,7 @@ if (side (group _killer) == buenos) then
 		{
 		if (_lado == malos) then
 			{
-			[-1, 0, "SDK Killed Unarmed Enemy"] remoteExec ["A3A_fnc_timingCA", 2];
-			//[3,-3,getPos _muerto] remoteExec ["A3A_fnc_citySupportChange",2];
+			[0,-2,getPos _muerto] remoteExec ["A3A_fnc_citySupportChange",2];
 			[1,0] remoteExec ["A3A_fnc_prestige",2];
 			}
 		else
@@ -65,7 +64,7 @@ if (side (group _killer) == buenos) then
 		}
 	else
 		{
-		//[-3,3,getPos _muerto] remoteExec ["A3A_fnc_citySupportChange",2];
+		[-1,1,getPos _muerto] remoteExec ["A3A_fnc_citySupportChange",2];
 		if (_lado == malos) then
 			{
 			[0.1,0] remoteExec ["A3A_fnc_prestige",2];
@@ -80,11 +79,11 @@ else
 	{
 	if (_lado == malos) then
 		{
-		[-1,0,getPos _muerto, "AAFKilledEH"] remoteExec ["A3A_fnc_citySupportChange",2];
+		[-0.25,0,getPos _muerto] remoteExec ["A3A_fnc_citySupportChange",2];
 		}
 	else
 		{
-		//[0.25,0,getPos _muerto] remoteExec ["A3A_fnc_citySupportChange",2];
+		[0.25,0,getPos _muerto] remoteExec ["A3A_fnc_citySupportChange",2];
 		};
 	};
 _marcador = _muerto getVariable "marcador";
